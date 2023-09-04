@@ -22,6 +22,14 @@ namespace Prodavnica.Helper
 
 			CreateMap<Proizvod, IzmenaProizvodaDTO>().ReverseMap();
 
+			CreateMap<Porudzbina, PorudzbinaDTO>().ReverseMap();
+
+			CreateMap<Porudzbina, KreiranjePorudzbineDTO>().ReverseMap();
+
+			CreateMap<PorudzbinaProizvod, PorudzbinaProizvodDTO>().ReverseMap();
+
+			CreateMap<PorudzbinaProizvod, KreiranjePorudzbinaProizvodDTO>().ReverseMap();
+
 			CreateMap<IFormFile, byte[]>().ConvertUsing((file, _, context) => ConvertIFormFileToByteArray(file, context));
 			CreateMap<byte[], IFormFile>().ConvertUsing((byteArray, _, context) => ConvertByteArrayToIFormFile(byteArray, context));
 		}

@@ -55,12 +55,14 @@ builder.Services.AddDbContext<DataContext>(options =>
 // Repositories
 builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
 builder.Services.AddScoped<IProizvodRepository, ProizvodRepository>();
+builder.Services.AddScoped<IPorudzbinaRepository, PorudzbinaRepository>();
 
 //Services
 builder.Services.AddScoped<IKorisnikService, KorisnikService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IProizvodService, ProizvodService>();
+builder.Services.AddScoped<IPorudzbinaService, PorudzbinaService>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
