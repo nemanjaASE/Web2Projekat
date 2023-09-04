@@ -54,11 +54,13 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 // Repositories
 builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
+builder.Services.AddScoped<IProizvodRepository, ProizvodRepository>();
 
 //Services
 builder.Services.AddScoped<IKorisnikService, KorisnikService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IProizvodService, ProizvodService>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -99,7 +101,7 @@ builder.Services.AddAuthorization(options =>
 	  .Build();
 
 	options.AddPolicy("VerifiedUserOnly", policy =>
-			  policy.RequireClaim("Verification", "ACCEPTED"));
+			  policy.RequireClaim("Verification", "PRIHVACENA"));
 });
 
 var app = builder.Build();
