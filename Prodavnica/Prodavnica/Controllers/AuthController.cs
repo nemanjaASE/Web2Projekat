@@ -31,5 +31,14 @@ namespace Prodavnica.Controllers
 
 			return Ok(token);
 		}
+
+		[HttpPost("google-login")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GoogleLogin([FromForm] string googleToken)
+		{
+			string token = await _service.GoogleLogin(googleToken);
+
+			return Ok(token);
+		}
 	}
 }
