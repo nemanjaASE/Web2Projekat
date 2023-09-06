@@ -16,6 +16,6 @@
 
 		public string Adresa { get; set; }
 
-		public byte[] Image { get; set; }
+		public byte[] Slika { get; set; }
 	}
 }

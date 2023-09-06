@@ -26,12 +26,12 @@ export default function NavBar() {
           <Button color='inherit' sx={{ 
             "&:hover": {
                 fontSize: "15px",
-              },}} onClick={handleHomeClick}>Home</Button>
+              },}} onClick={handleHomeClick}>Početna</Button>
           <Button color="inherit" sx={{ 
             "&:hover": {
                 fontSize: "15px",
               },}}
-          onClick={handleLogoutClick}>Logout</Button>
+          onClick={handleLogoutClick}>Odjava</Button>
         </Toolbar>
       </AppBar>
     </Box>

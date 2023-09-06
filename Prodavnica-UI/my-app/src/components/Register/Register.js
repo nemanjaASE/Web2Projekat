@@ -251,8 +251,8 @@ const Register = () => {
         return;
       }
   
-      const date = new Date(localDate.toString()).toISOString();
-      console.log(data);
+      const date = new Date(Date.parse(localDate));
+      date.setDate(date.getDate() + 1);
       
   
       const formData = new FormData();
@@ -262,7 +262,7 @@ const Register = () => {
       formData.append("PonovljenaSifra", data.PonovljenaSifra);
       formData.append("Ime", data.Ime);
       formData.append("Prezime", data.Prezime);
-      formData.append("DatumRodjenja", date);
+      formData.append("DatumRodjenja", date.toISOString());
       formData.append("Adresa", data.Adresa);
       formData.append("Tip", data.Tip);
       formData.append("ImageForm", data.ImageForm);

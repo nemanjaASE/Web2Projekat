@@ -5,6 +5,9 @@ import AuthContext from "../contexts/auth-context.js";
 import Login from "../components/Login/Login.js";
 import Register from "../components/Register/Register.js";
 import Dashboard from "../components/Dashboard/Dashboard.js";
+import Profile from "../components/Profile/Profile.js";
+import Verification from "../components/Verification/Verification.js";
+
 const AppRoutes = () => {
 
     const authContext= useContext(AuthContext);
@@ -18,10 +21,15 @@ const AppRoutes = () => {
           path="/register"
           element={ulogovan ? <Navigate to="/dashboard" /> : <Register />}
         />
+        <Route path="/profile" element={ulogovan ? <Profile /> : <Login />} />
         <Route
-        path="/dashboard"
-        element={ulogovan ? <Dashboard /> : <Login />}
-      />
+          path="/dashboard"
+          element={ulogovan ? <Dashboard /> : <Login />}
+        />
+        <Route
+          path="/verification"
+          element={ulogovan ? <Verification /> : <Login />}
+        />
       </Routes>
     );
   };
