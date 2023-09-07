@@ -88,13 +88,13 @@ namespace Prodavnica.Controllers
 
 		#region PUT
 
-		[HttpPut("{id}")]
+		[HttpPut]
 		[Authorize(Roles = "PRODAVAC", Policy = "VerifiedUserOnly")]
-		public async Task<IActionResult> Put(int id, [FromBody] IzmenaProizvodaDTO proizvodDto)
+		public async Task<IActionResult> Put([FromForm] IzmenaProizvodaDTO proizvodDto)
 		{
-			int userId = int.Parse(User.Claims.First(c => c.Type == "UserId").Value);
+            int userId = int.Parse(User.Claims.First(c => c.Type == "UserId").Value);
 
-			ProizvodDTO proizvod = await _service.UpdateProduct(userId, id, proizvodDto);
+			ProizvodDTO proizvod = await _service.UpdateProduct(userId, proizvodDto.Id, proizvodDto);
 
 			if (proizvod == null)
 			{

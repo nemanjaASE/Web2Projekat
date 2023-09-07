@@ -7,6 +7,7 @@ import Register from "../components/Register/Register.js";
 import Dashboard from "../components/Dashboard/Dashboard.js";
 import Profile from "../components/Profile/Profile.js";
 import Verification from "../components/Verification/Verification.js";
+import Product from "../components/Product/Product.js";
 
 const AppRoutes = () => {
 
@@ -29,6 +30,10 @@ const AppRoutes = () => {
         <Route
           path="/verification"
           element={ulogovan ? <Verification /> : <Login />}
+        />
+        <Route 
+         path="/product" 
+          element={ulogovan ? <Product /> : <Login />} 
         />
       </Routes>
     );
