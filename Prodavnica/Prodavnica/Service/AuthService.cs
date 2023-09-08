@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Google.Apis.Auth;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Prodavnica.Common;
 using Prodavnica.Dto;
 using Prodavnica.Exceptions;
@@ -8,6 +9,7 @@ using Prodavnica.Interfaces.IRepository;
 using Prodavnica.Interfaces.IService;
 using Prodavnica.Models;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -39,12 +41,8 @@ namespace Prodavnica.Service
 			List<Korisnik> korisnici = await _repositoryKorisnik.GetAll();
 
 			Korisnik korisnik = korisnici.Find(k => k.Email.Equals(externalUser.Email));
-			if(korisnik == null)
-			{
-
-					throw new ConflictException("Nalog ne postoji!");
-			}
-			/*if (korisnik == null)
+			
+			if (korisnik == null)
 			{
 				korisnik = new Korisnik()
 				{
@@ -52,7 +50,7 @@ namespace Prodavnica.Service
 					Prezime = externalUser.Prezime,
 					KorisnickoIme = externalUser.KorisnickoIme,
 					Email = externalUser.Email,
-					Slika = new byte[0],
+					Slika = externalUser.Slika,
 					Password = "",
 					Adresa = "",
 					DatumRodjenja = DateTime.Now,
@@ -61,7 +59,7 @@ namespace Prodavnica.Service
 				};
 
 				await _repositoryKorisnik.AddKorisnik(korisnik);
-			}*/
+			}
 
 			var claims = new[] {
 						new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -137,12 +135,21 @@ namespace Prodavnica.Service
 
 				var googleUserInfo = await GoogleJsonWebSignature.ValidateAsync(externalLoginToken, validationSettings);
 
+				byte[] imageBytes = new byte[0];
+
+				using (WebClient webClient = new WebClient())
+				{
+					imageBytes = webClient.DownloadData(googleUserInfo.Picture);
+
+				}
+
 				GoogleKorisnikDTO externalUser = new GoogleKorisnikDTO()
 				{
 					Email = googleUserInfo.Email,
 					KorisnickoIme = googleUserInfo.Email.Split("@")[0],
 					Ime = googleUserInfo.GivenName,
 					Prezime = googleUserInfo.FamilyName,
+					Slika = imageBytes,
 				};
 
 				return externalUser;

@@ -46,7 +46,7 @@ const Profile = () => {
       KorisnickoIme: "",
       Email: "",
       Sifra: "",
-      PonovljenaSifra: "",
+      StaraSifra: "",
       Ime: "",
       Prezime: "",
       DatumRodjenja: "",

@@ -28,7 +28,7 @@ export default function NavBar() {
             "&:hover": {
                 fontSize: "15px",
               },}} onClick={handleHomeClick}>Početna</Button>
-          <div style={{fontFamily: "Segoe Script", fontSize: "30px"}}>WEB PRODAVNICA.</div>
+          <div style={{fontFamily: "Garamond", fontSize: "30px"}}>WEB PRODAVNICA.</div>
           <Button color="inherit" sx={{ 
             "&:hover": {
                 fontSize: "15px",

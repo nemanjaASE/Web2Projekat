@@ -615,12 +615,13 @@ const Register = () => {
                   variant="outlined"
                   sx={{ mt: 6, mb: 10 }}
                 >
-                  Register
+                  Registruj se
                 </Button>
-                <Grid container justifyContent="flex" sx={{ marginTop: -7, marginLeft: 12, marginBottom: 7}}>
+                <Grid container justifyContent="flex" sx={{ marginTop: -7, marginLeft: 16, marginBottom: 7, fontSize: 12}}>
+                   Već imate nalog?&nbsp;
                   <Grid item>
-                    <Link href="/" variant="body1">
-                      Već imate nalog? Ulogujte se
+                    <Link href="/" variant="body1" sx={{fontSize: 12}}>
+                       Ulogujte se
                     </Link>
                   </Grid>
                 </Grid>

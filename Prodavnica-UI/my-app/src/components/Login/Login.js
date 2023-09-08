@@ -27,7 +27,6 @@ const isNotEmpty = (value) => value.trim() !== "";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Login = () => {
-    const navigate = useNavigate();
     const defaultTheme = createTheme();
   
     const [data, setData] = useState({
@@ -115,7 +114,6 @@ const Login = () => {
           <CssBaseline />
             <Box
               sx={{
-                marginTop: 5,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -197,19 +195,27 @@ const Login = () => {
                   fullWidth
                   sx={{ mt: 1, mb: 5 }}
                 >
-                  Login
+                  Ulogujte se
                 </Button>
                 <Grid container>
-                  <Grid item sx={{ marginLeft: 10}}>
+                  
+                    <Grid item sx={{marginTop: -2, marginLeft: 16, fontSize: 12}}>
+                    Nemate nalog?
+                    <Link href="/register" variant="body1" justifyContent="flex" sx={{fontSize: 12}}>
+                      {" Registruj se"}
+                    </Link>
+                    </Grid>
+                    
+                    <Grid item sx={{marginTop: 1, marginLeft: 25, fontSize: 12, marginBottom: 1}}>
+                        ili
+                    </Grid>
+                    <Grid item sx={{ marginLeft: 12}}>
                     <GoogleLogin
+                      shape="pill"
+                      text="continue_with"
                       onSuccess={googleLoginHandler}
                       onError={googleLoginErrorHandler}
                     /> 
-                    <Grid item sx={{marginTop: 2}}>
-                    <Link href="/register" variant="body1" justifyContent="flex" sx={{marginLeft: 3}}>
-                      {"Nemate nalog? Registruj se"}
-                    </Link>
-                    </Grid>
                   </Grid>
                 </Grid>
               </Box>
