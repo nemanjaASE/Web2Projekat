@@ -8,6 +8,7 @@ import Dashboard from "../components/Dashboard/Dashboard.js";
 import Profile from "../components/Profile/Profile.js";
 import Verification from "../components/Verification/Verification.js";
 import Product from "../components/Product/Product.js";
+import Shop from "../components/Shop/Shop.js";
 
 const AppRoutes = () => {
 
@@ -35,6 +36,10 @@ const AppRoutes = () => {
          path="/product" 
           element={ulogovan ? <Product /> : <Login />} 
         />
+        <Route 
+        path="/shop" 
+        element={ulogovan ? <Shop /> : <Login />} 
+      />
       </Routes>
     );
   };
