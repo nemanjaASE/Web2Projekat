@@ -39,8 +39,12 @@ namespace Prodavnica.Service
 			List<Korisnik> korisnici = await _repositoryKorisnik.GetAll();
 
 			Korisnik korisnik = korisnici.Find(k => k.Email.Equals(externalUser.Email));
+			if(korisnik == null)
+			{
 
-			if (korisnik == null)
+					throw new ConflictException("Nalog ne postoji!");
+			}
+			/*if (korisnik == null)
 			{
 				korisnik = new Korisnik()
 				{
@@ -57,7 +61,7 @@ namespace Prodavnica.Service
 				};
 
 				await _repositoryKorisnik.AddKorisnik(korisnik);
-			}
+			}*/
 
 			var claims = new[] {
 						new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

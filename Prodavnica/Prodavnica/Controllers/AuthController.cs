@@ -17,7 +17,6 @@ namespace Prodavnica.Controllers
 			_service = service;
 		}
 
-		//POST api/auth
 		[HttpPost]
 		[AllowAnonymous]
 		public async Task<IActionResult> Post([FromBody] LoginDTO loginDto)

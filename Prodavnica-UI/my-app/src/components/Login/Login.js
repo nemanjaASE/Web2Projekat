@@ -10,8 +10,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import CssBaseline from "@mui/material/CssBaseline";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Link from "@mui/material/Link";
 import { InputAdornment } from '@mui/material';
 
@@ -87,20 +85,20 @@ const Login = () => {
       });
     };
   
-    // const googleLoginHandler = (response) => { 
-    //   let data = new FormData();
-    //   data.append("googleToken", response.credential);
-    //   authContext.googleLogin(data);
-    // };
+     const googleLoginHandler = (response) => { 
+      let data = new FormData();
+       data.append("googleToken", response.credential);
+     authContext.googleLogin(data);
+     };
   
-    // const googleLoginErrorHandler = () => {
-    //   toast.error("Google login error", {
-    //     position: "top-center",
-    //     autoClose: 2500,
-    //     closeOnClick: true,
-    //     pauseOnHover: false,
-    //   });
-    // };
+    const googleLoginErrorHandler = () => {
+      toast.error("Google login error", {
+       position: "top-center",
+        autoClose: 2500,
+        closeOnClick: true,
+        pauseOnHover: false,
+     });
+     };
   
     return (
       <Box
@@ -202,15 +200,16 @@ const Login = () => {
                   Login
                 </Button>
                 <Grid container>
-                  <Grid item sx={{ marginLeft: 10 }}>
-                    {/* <GoogleLogin
-                      sx={{ mt: 3, mb: 2 }}
+                  <Grid item sx={{ marginLeft: 10}}>
+                    <GoogleLogin
                       onSuccess={googleLoginHandler}
                       onError={googleLoginErrorHandler}
-                    /> */}
+                    /> 
+                    <Grid item sx={{marginTop: 2}}>
                     <Link href="/register" variant="body1" justifyContent="flex" sx={{marginLeft: 3}}>
                       {"Nemate nalog? Registruj se"}
                     </Link>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Box>

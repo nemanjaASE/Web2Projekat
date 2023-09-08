@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import { useNavigate } from "react-router-dom";
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -21,12 +22,13 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }} >
-      <AppBar position="static" sx={{backgroundColor: 'crimson'}}>
+      <AppBar position="static" sx={{backgroundColor: 'crimson', borderRadius: '0px 0px 30px'}}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Button color='inherit' sx={{ 
             "&:hover": {
                 fontSize: "15px",
               },}} onClick={handleHomeClick}>Početna</Button>
+          <div style={{fontFamily: "Segoe Script", fontSize: "30px"}}>WEB PRODAVNICA.</div>
           <Button color="inherit" sx={{ 
             "&:hover": {
                 fontSize: "15px",

@@ -8,6 +8,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import { getAllProducts } from "../../services/ProizvodService";
 import CartContext from "../../contexts/cart-context";
 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
+
 
 const Shop = () => {
 
@@ -130,7 +133,9 @@ const Shop = () => {
             color: 'white',
         }}}
         >
-          Moja korpa
+          <Badge badgeContent={cartCtx.items.length} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
         </Button>
       ),
     },

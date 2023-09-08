@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 
-import { login } from "../services/AuthService.js";
+import { login, googleLogin } from "../services/AuthService.js";
 
 const decodeToken = (token) => {
     console.log("Token:", token);
@@ -26,6 +26,7 @@ const AuthContext = React.createContext({
     uloga: "",
     onLogout: () => {},
     onLogin: (logInData) => {},
+    googleLogin: (loginData) => {},
   });
 
   export const AuthContextProvider = (props) => {
@@ -96,6 +97,35 @@ const AuthContext = React.createContext({
         navigate("/");
       };
 
+      const googleLoginHandler = async (logInData) => {
+        try {
+          const response = await googleLogin(logInData);
+          console.log(response);
+          console.log(response);
+    
+          const decodedToken = decodeToken(response.data);
+          console.log("decoded token: ", decodeToken);
+          let verification = decodedToken.Verification;
+          let role =
+            decodedToken[
+              "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+            ];
+    
+          setUlogovan(true);
+          setToken(response.data);
+          setUloga(role);
+          setVerifikacija(verification);
+    
+          sessionStorage.setItem("ulogovan", "1");
+          sessionStorage.setItem("token", response.data);
+          sessionStorage.setItem("verifikacija", verification);
+          sessionStorage.setItem("uloga", role);
+          navigate("/dashboard");
+        } catch (error) {
+          if (error.response) alert(exceptionRead(error.response.data));
+        }
+      };
+
       return (
         <AuthContext.Provider
           value={{
@@ -105,6 +135,7 @@ const AuthContext = React.createContext({
             uloga: uloga,
             onLogout: odjavaHandler,
             onLogin: logovanjeHandler,
+            googleLogin: googleLoginHandler,
           }}
         >
           {props.children}

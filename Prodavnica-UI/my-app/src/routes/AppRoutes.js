@@ -9,6 +9,7 @@ import Profile from "../components/Profile/Profile.js";
 import Verification from "../components/Verification/Verification.js";
 import Product from "../components/Product/Product.js";
 import Shop from "../components/Shop/Shop.js";
+import Orders from "../components/Orders/Orders.js";
 
 const AppRoutes = () => {
 
@@ -39,7 +40,11 @@ const AppRoutes = () => {
         <Route 
         path="/shop" 
         element={ulogovan ? <Shop /> : <Login />} 
-      />
+        />
+        <Route 
+        path="/orders" 
+        element={ulogovan ? <Orders /> : <Login />} 
+        />
       </Routes>
     );
   };
