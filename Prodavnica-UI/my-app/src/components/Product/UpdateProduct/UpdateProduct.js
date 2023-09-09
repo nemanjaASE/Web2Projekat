@@ -7,7 +7,6 @@ import {
     TextField,
     Grid,
     Box,
-    Typography,
   } from "@mui/material";
 
 import ImageForm from "../../ImageForm/ImageForm";
@@ -70,26 +69,27 @@ const UpdateProduct = ({ open, onClose, product}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const formData = new FormData();
+
     formData.append("Id", product.id);
     formData.append("Naziv", data.Naziv);
     formData.append("Cena", data.Cena);
     formData.append("Kolicina", data.Kolicina);
     formData.append("Opis", data.Opis);
     formData.append("ImageForm", data.ImageForm);
-    console.log(formData)
 
     const updateProduct2 = async () => {
       try {
         const response = await updateProduct(formData).then(() => {onClose();});
-        alert("Uspesno");
+        alert("Uspesno izmenjen proizvod.");
       } catch (error) {
         if (error) alert("Error ",error.response.data);
         return;
       }
     };
-    updateProduct2 ();
 
+    updateProduct2 ();
   };
 
   return (

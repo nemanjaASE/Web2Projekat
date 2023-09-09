@@ -55,15 +55,9 @@ const AuthContext = React.createContext({
 
     const logovanjeHandler = async (logInData) => {
         try {
-          console.log(logInData)
-
           const response = await login(logInData);
 
-          console.log("Odgovor:",response);
-
           const decodedToken = decodeToken(response.data);
-
-          console.log("Decoded token: ", decodeToken);
 
           let verification = decodedToken.Verification;
           let role =
@@ -100,11 +94,9 @@ const AuthContext = React.createContext({
       const googleLoginHandler = async (logInData) => {
         try {
           const response = await googleLogin(logInData);
-          console.log(response);
-          console.log(response);
     
           const decodedToken = decodeToken(response.data);
-          console.log("decoded token: ", decodeToken);
+ 
           let verification = decodedToken.Verification;
           let role =
             decodedToken[

@@ -20,7 +20,7 @@ import {
 } from "../../services/ProizvodService";
 
 const Product = () => {
-  //const exceptionRead = (value) => value.split(":")[1].split("at")[0];
+  
   const [newProductOpen, setNewProductOpen] = useState(false);
   const [updateProductOpen, setUpdateProductOpen] = useState(false);
 
@@ -180,11 +180,13 @@ const Product = () => {
             product={selectedProduct}/>
         )}
         <DataGrid
+          localeText={{ noRowsLabel: "Nemate nijedan dodat proizvod"}}
           rows={products}
           columns={columns}
           rowHeight={200}
           sx={{ color: "black",textAlign: "center", BorderAllSharp: "1px", marginTop:"100px"
           ,"& .MuiDataGrid-row": {
+             fontSize: 18,
              border: "1px solid white",
              borderRadius: "5px",
              backgroundColor: "white",

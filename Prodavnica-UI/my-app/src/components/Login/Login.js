@@ -1,5 +1,4 @@
 import React, { useRef, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/auth-context";
 import { GoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
@@ -8,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Divider from '@mui/material/Divider';
 import TextField from "@mui/material/TextField";
 import CssBaseline from "@mui/material/CssBaseline";
 import Link from "@mui/material/Link";
@@ -85,14 +85,15 @@ const Login = () => {
     };
   
      const googleLoginHandler = (response) => { 
-      let data = new FormData();
+       let data = new FormData();
+
        data.append("googleToken", response.credential);
-     authContext.googleLogin(data);
+       authContext.googleLogin(data);
      };
   
     const googleLoginErrorHandler = () => {
-      toast.error("Google login error", {
-       position: "top-center",
+        toast.error("Google login error", {
+        position: "top-center",
         autoClose: 2500,
         closeOnClick: true,
         pauseOnHover: false,
@@ -133,12 +134,12 @@ const Login = () => {
               >
                 
                 <TextField
-                sx={{
+                  sx={{
                     width: 400,
                     "& .MuiInputBase-root": {
                         height: 50
                     }
-                }}
+                  }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -161,12 +162,12 @@ const Login = () => {
                   onChange={(e) => setData({ ...data, Email: e.target.value })}
                 />
                 <TextField
-                sx={{
+                  sx={{
                     width: 400,
                     "& .MuiInputBase-root": {
                         height: 50
                     }
-                }}
+                  }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -198,24 +199,22 @@ const Login = () => {
                   Ulogujte se
                 </Button>
                 <Grid container>
-                  
                     <Grid item sx={{marginTop: -2, marginLeft: 16, fontSize: 12}}>
-                    Nemate nalog?
-                    <Link href="/register" variant="body1" justifyContent="flex" sx={{fontSize: 12}}>
-                      {" Registruj se"}
-                    </Link>
+                      Nemate nalog?
+                      <Link href="/register" variant="body1" justifyContent="flex" sx={{fontSize: 12}}>
+                        {" Registruj se"}
+                      </Link>
                     </Grid>
-                    
-                    <Grid item sx={{marginTop: 1, marginLeft: 25, fontSize: 12, marginBottom: 1}}>
-                        ili
-                    </Grid>
+                    <Divider sx={{color: "black", width:'100%', marginTop: 2, marginBottom: 2, fontSize: 12}}>
+                      ili
+                    </Divider>
                     <Grid item sx={{ marginLeft: 12}}>
-                    <GoogleLogin
-                      shape="pill"
-                      text="continue_with"
-                      onSuccess={googleLoginHandler}
-                      onError={googleLoginErrorHandler}
-                    /> 
+                      <GoogleLogin
+                        shape="pill"
+                        text="continue_with"
+                        onSuccess={googleLoginHandler}
+                        onError={googleLoginErrorHandler}
+                      /> 
                   </Grid>
                 </Grid>
               </Box>

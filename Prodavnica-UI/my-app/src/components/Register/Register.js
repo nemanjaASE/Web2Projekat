@@ -82,7 +82,7 @@ const Register = () => {
         return;
       }
       const file = event.target.files[0];
-      console.log(file);
+      
       const reader = new FileReader();
       if (file) {
         reader.readAsDataURL(file);
@@ -617,7 +617,7 @@ const Register = () => {
                 >
                   Registruj se
                 </Button>
-                <Grid container justifyContent="flex" sx={{ marginTop: -7, marginLeft: 16, marginBottom: 7, fontSize: 12}}>
+                <Grid container justifyContent="flex" sx={{ marginTop: -7, marginLeft: 16, marginBottom: 20, fontSize: 12}}>
                    Već imate nalog?&nbsp;
                   <Grid item>
                     <Link href="/" variant="body1" sx={{fontSize: 12}}>

@@ -80,20 +80,19 @@ const NewProduct = ({ open, onClose }) => {
         alert("Cena mora biti veca od nula!");
         return;
     }
-    if(data.ImageForm === "")
-    {
-        alert("Morate uneti sliku!");
-        return;
+    if(data.ImageForm === ""){
+      
+      alert("Slika je neophodna!");
+      return;
     }
-   
     formData.append("ImageForm", data.ImageForm);
 
     const addProduct = async () => {
       try {
         const response = await createNewProduct(formData).then(() => {onClose();});
-
+        alert("Novi proizvod uspesno dodat!");
       } catch (error) {
-        if (error) alert(exceptionRead(error.response.data));
+        if (error) alert(exceptionRead(error.response.data.toString()));
         return;
       }
     };
@@ -211,6 +210,7 @@ const NewProduct = ({ open, onClose }) => {
                 >
                   {
                     <ImageForm
+                      required
                       disabled={true}
                       image={displayImage ? displayImage : defaultImage}
                       imageInput={imageInput}
